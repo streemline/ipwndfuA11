@@ -304,13 +304,13 @@ def get_string(dev, index, langid = None):
     device's langid tuple is empty, or with an explicit langid the device does
     not support.
     """
-    if 0 == index:
+    if index == 0:
         return None
 
     from usb.control import get_descriptor
     langids = dev.langids
 
-    if 0 == len(langids):
+    if len(langids) == 0:
         raise ValueError("The device has no langid")
     if langid is None:
         langid = langids[0]
